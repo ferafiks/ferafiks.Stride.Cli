@@ -243,7 +243,8 @@ internal static class AssetsCommand
                 return;
 
             // Solution code
-            if (manager.TryFindAndLoadSolution(result.GetValue(CommonArguments.Solution), out var session, result.GetValue(CommonArguments.SolutionIgnoreErrors)))
+            if (manager.TryFindAndLoadSolution(result.GetValue(CommonArguments.Solution), out var session, result.GetValue(CommonArguments.SolutionIgnoreErrors)) &&
+                manager.TryFindPackageFromLocation(session!, packageLocation, out var targetPackage))
             {
                 // Get the packages that should be displayed
                 List<Package> packages = [];
@@ -251,15 +252,11 @@ internal static class AssetsCommand
                 if (result.GetValue(includeExternal)) packages.AddRange(session!.Packages.Except(session.LocalPackages));
 
                 // Create dependency tree
-                AssetDependencyMap map = new();
-                if (packageLocation != null)
-                {
-                    if (!manager.TryFindPackageFromLocation(session!, packageLocation, out var targetPackage))
-                        return;
+                var map = manager.CreateAssetDependencyMap(session!, targetPackage!);
 
-                    map = manager.CreateAssetDependencyMap(session!, targetPackage!);
-                }
-
+                // Output
+                Console.WriteLine($"Creating dependency tree from project package {targetPackage!.Meta?.Name}");
+                Console.WriteLine();
                 foreach (var project in packages)
                 {
                     Console.WriteLine($"{project.Meta.Name}");
@@ -305,17 +302,15 @@ internal static class AssetsCommand
                 !manager.PackageFileManager.TryFindFile(packageValue, out packageLocation))
                 return;
             
-            var assetValue = result.GetValue(asset);
+            var assetValue = result.GetRequiredValue(asset);
 
             if (manager.TryFindAndLoadSolution(result.GetValue(solution), out var session, result.GetValue(CommonArguments.SolutionIgnoreErrors)))
             {
-                if (manager.TryFindPackageFromLocation(session!, packageLocation, out var targetPackage))
+                if (!manager.TryFindPackageFromLocation(session!, packageLocation, out var targetPackage) ||
+                    !manager.TryGetAssetFromPath(session!, assetValue, out var target))
                     return;
                 
                 var map = manager.CreateAssetDependencyMap(session!, targetPackage!);
-
-                var target = session!.Packages.SelectMany(x => x.Assets)
-                    .FirstOrDefault(x => x.Location == assetValue || x.UnqualifiedUrl == assetValue);
                 
                 if (target == null)
                 {

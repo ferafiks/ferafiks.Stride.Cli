@@ -9,7 +9,7 @@ public static partial class Extensions
         s.MakePathRelative(Environment.CurrentDirectory);
     
     public static string MakePathRelative(this string s, string relativeTo) =>
-        Path.GetRelativePath(s, relativeTo);
+        Path.GetRelativePath(relativeTo, s);
     
     public static TextWriter GetConsoleTextWriter(this LogMessageType messageType)
     {
