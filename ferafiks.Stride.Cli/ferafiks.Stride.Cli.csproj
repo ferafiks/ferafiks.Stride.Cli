@@ -21,6 +21,11 @@
     <ToolCommandName>stride-frfks</ToolCommandName>
     <PackageTags>stride;gamedev;cli;dotnet-tool</PackageTags>
     <AssemblyName>stride-frfks</AssemblyName>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>icon.png</PackageIcon>
+    <RepositoryUrl>https://github.com/ferafiks/ferafiks.Stride.Cli</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
@@ -29,6 +34,11 @@
     <PackageReference Include="System.CommandLine" Version="2.0.11" />
 
     <PackageReference Include="Microsoft.Build.Framework" Version="18.3.3" ExcludeAssets="runtime" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="icon.png" Pack="true" PackagePath="/"/>
+    <None Include="../README.md" Pack="true" PackagePath="/"/>
   </ItemGroup>
 
 </Project>

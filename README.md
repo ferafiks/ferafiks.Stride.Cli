@@ -15,7 +15,11 @@ This tool uses Stride's assemblies to imitate some of Game Studio's functionalit
 
 ## Installation
 
-TODO: ADD THAT
+Just run the following command:
+
+```bash
+dotnet tool install -g ferafiks.stride.cli
+```
 
 ## How to use
 
