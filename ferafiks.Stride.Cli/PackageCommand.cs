@@ -18,8 +18,7 @@ internal static class PackageCommand
             {
                 CreateNew(packageFileManager, path),
                 CreateAssets(packageFileManager, path),
-                CreateResources(packageFileManager, path),
-                CreateRootAssets(packageFileManager, path)
+                CreateResources(packageFileManager, path)
             }
         };
     }
@@ -136,33 +135,6 @@ internal static class PackageCommand
                 list,
                 add,
                 remove
-            }
-        };
-    }
-
-    public static Command CreateRootAssets(PackageFileManager packageFileManager, Argument<string> path)
-    {
-        var list = new Command("list", "Lists root assets that are defined in the project package.");
-        list.SetAction(result =>
-        {
-            PackageSessionResult sessionResult = new();
-            PackageSession.Load("/media/files/VS/tpwigBooth/strideBooth.slnx", sessionResult, new());
-            Console.WriteLine(sessionResult.Session!.Packages.Count);
-            
-            if (packageFileManager.TryFindFile(result.GetValue(path)!, out var pathValue) &&
-                packageFileManager.TryLoadPackage(pathValue!, out var package))
-            {
-                foreach (var item in package!.RootAssets)
-                    Console.WriteLine($"{item.HasLocation()}");   
-            }
-
-        });
-
-        return new Command("rootassets", "Commands related to the list of root assets.")
-        {
-            Subcommands =
-            {
-                list
             }
         };
     }

@@ -393,6 +393,9 @@ internal static class AssetsCommand
         }
     }
 
+    /// <summary>Creates the root subcommand.</summary>
+    /// <param name="manager">Solution manager used by the command.</param>
+    /// <returns>Returns the root subcommand.</returns>
     public static Command CreateRoot(SolutionManager manager)
     {
         var solution = new Option<string?>("--solution", "-s") { Description = "Path to the solution file or directory containing one." };
