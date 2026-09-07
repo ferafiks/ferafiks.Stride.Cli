@@ -112,7 +112,7 @@ public sealed class SolutionManager
     private static PackageSessionResult CreateResult(LogMessageType minimumMessageLevel)
     {
         PackageSessionResult sessionResult = new();
-        sessionResult.MessageLogged += (obj, args) => args.Message.Type.GetConsoleTextWriter().WriteLine($"[{args.Message.Type}] {args.Message.Text}");
+        sessionResult.MessageLogged += (obj, args) => CliLogger.HandleLog(args.Message);
         sessionResult.ActivateLog(minimumMessageLevel, LogMessageType.Fatal);
         return sessionResult;
     }
@@ -162,24 +162,24 @@ public sealed class SolutionManager
 
     public void AddRootAssets(Package package, IEnumerable<AssetReference> references)
     {
-        var toAdd = references.Except(package.RootAssets);
+        var toAdd = references.Except(package.RootAssets).ToList();
         package.RootAssets.AddRange(toAdd);
 
         if (PackageFileManager.TrySavePackage(package) && !CliLogger.BlockStandardWrite)
             Console.WriteLine(toAdd.Any() ?
-                $"{toAdd.Count()} assets have been added to root: {string.Join(", ", toAdd)}" :
+                $"{toAdd.Count()} assets have been added to root: {string.Join(", ", toAdd.Select(x => x.Location))}" :
                 "No new assets have been added to root.");
     }
 
     public void RemoveRootAssets(Package package, IEnumerable<AssetReference> references)
     {
-        var toRemove = references.Union(package!.RootAssets);
+        var toRemove = references.Union(package!.RootAssets).ToList();
         foreach (var item in toRemove)
             package.RootAssets.Remove(item);
         
         if (PackageFileManager.TrySavePackage(package) && !CliLogger.BlockStandardWrite)
             Console.WriteLine(toRemove.Any() ?
-                $"{toRemove.Count()} assets have been removed from root: {string.Join(", ", toRemove)}" :
+                $"{toRemove.Count()} assets have been removed from root: {string.Join(", ", toRemove.Select(x => x.Location))}" :
                 "No existing root assets have been removed.");
     }
 

@@ -246,9 +246,9 @@ internal static class AssetsCommand
             if (manager.TryFindAndLoadSolution(result.GetValue(CommonArguments.Solution), out var session, result.GetValue(CommonArguments.SolutionIgnoreErrors)))
             {
                 // Get the packages that should be displayed
-                IEnumerable<Package> packages = [];
-                if (!result.GetValue(ignoreProject)) packages = packages.Concat(session!.LocalPackages);
-                if (result.GetValue(includeExternal)) packages = packages.Concat(session!.Packages.Where(x => session.LocalPackages.Contains(x)));
+                List<Package> packages = [];
+                if (!result.GetValue(ignoreProject)) packages.AddRange(session!.LocalPackages);
+                if (result.GetValue(includeExternal)) packages.AddRange(session!.Packages.Except(session.LocalPackages));
 
                 // Create dependency tree
                 AssetDependencyMap map = new();

@@ -11,7 +11,10 @@ public class CliLogger : Logger
         ActivateLog(LogMessageType.Info, LogMessageType.Fatal);
     }
 
-    protected override void LogRaw(ILogMessage logMessage)
+    protected override void LogRaw(ILogMessage logMessage) =>
+        HandleLog(logMessage);
+
+    public static void HandleLog(ILogMessage logMessage)
     {
         var writer = logMessage.Type switch
         {
