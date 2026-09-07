@@ -7,6 +7,22 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <SelfContained>true</SelfContained>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>ferafiks.Stride.Cli</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>ferafiks</Authors>
+    <Description>A command-line program for managing Stride 3D projects without the need for Game Studio.</Description>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>stride-frfks</ToolCommandName>
+    <PackageTags>stride;gamedev;cli;dotnet-tool</PackageTags>
+    <AssemblyName>stride-frfks</AssemblyName>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Stride.Assets" Version="4.4.0-beta5" />
     <PackageReference Include="Stride.Assets.Models" Version="4.4.0-beta5" />

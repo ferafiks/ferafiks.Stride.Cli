@@ -1,4 +1,4 @@
-# ferafiks's Stride CLI tool
+# ferafiks' Stride CLI tool
 
 A command-line program for managing [Stride 3D](https://stride3d.net) projects without the need for Game Studio. Intended to be used for code-only projects created with the community toolkit. Features include:
 
