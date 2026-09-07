@@ -1,11 +1,11 @@
 # ferafiks' Stride CLI tool
 
-A command-line program for managing [Stride 3D](https://stride3d.net) projects without the need for Game Studio. Intended to be used for code-only projects created with the community toolkit. Features include:
+A command-line program for managing [Stride 3D](https://stride3d.net) projects without the need for Game Studio. Intended to be used for code-only projects created with the community toolkit. Notable features:
 
 * Works on all platforms
-* More control than in Game Studio
+* More control over packages than in Game Studio
 * Importing resources
-* Adding assets as root
+* Managing root assets
 * Listing assets and their paths
 * Displaying asset dependency trees
 
@@ -22,9 +22,9 @@ TODO: ADD THAT
 The following are a few examples on how to use the tool. You can find more information by executing commands directly with the `--help` flag.
 
 > [!NOTE]
-> These examples will often specify the project file directly, as this tool is mostly intended for community-toolkit projects that normally struggle with finding the starting solution.
+> These examples will often specify the project package file directly, as this tool is mostly intended for community-toolkit projects that normally struggle with finding the starting solution.
 >
-> For standard Stride projects, you can omit the `-p` flag and it's value.
+> For standard Stride projects, you should be able to omit the `-p` flag and it's value.
 
 ### Importing assets
 
