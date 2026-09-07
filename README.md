@@ -13,6 +13,10 @@ A command-line program for managing [Stride 3D](https://stride3d.net) projects w
 
 This tool uses Stride's assemblies to imitate some of Game Studio's functionality, most notably being able to load a solution file.
 
+## Stride compatibility
+
+Tested with 4.4 and 4.3. Should work for older versions as long as they have a similar project architecture.
+
 ## Installation
 
 Just run the following command:
