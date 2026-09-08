@@ -17,7 +17,7 @@
   <!-- Nuget properties -->
   <PropertyGroup>
     <PackageId>ferafiks.Stride.Cli</PackageId>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Authors>ferafiks</Authors>
     <Description>A command-line program for managing Stride 3D projects without the need for Game Studio.</Description>
     <PackAsTool>true</PackAsTool>
