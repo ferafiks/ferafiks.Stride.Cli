@@ -29,11 +29,6 @@ dotnet tool install -g ferafiks.stride.cli
 
 The following are a few examples on how to use the tool. You can find more information by executing commands directly with the `--help` flag.
 
-> [!NOTE]
-> These examples will often specify the project package file directly, as this tool is mostly intended for community-toolkit projects that normally struggle with finding the starting solution.
->
-> For standard Stride projects, you should be able to omit the `-p` flag and it's value.
-
 ### Importing assets
 
 ```bash

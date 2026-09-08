@@ -33,8 +33,8 @@
 
   <!-- Packages -->
   <ItemGroup>
-    <PackageReference Include="Stride.Assets" Version="4.4.0-beta5" />
-    <PackageReference Include="Stride.Assets.Models" Version="4.4.0-beta5" />
+    <PackageReference Include="Stride.Assets" Version="4.4.0-beta6" />
+    <PackageReference Include="Stride.Assets.Models" Version="4.4.0-beta6" />
     <PackageReference Include="System.CommandLine" Version="2.0.11" />
 
     <PackageReference Include="Microsoft.Build.Framework" Version="18.3.3" ExcludeAssets="runtime" PrivateAssets="all" />

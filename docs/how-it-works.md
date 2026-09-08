@@ -23,7 +23,7 @@ Everything you want is located in `Stride.Assets` (contains most things) and `St
     PackageSession.Load("path/to/solution", results);
     ```
 
-    > [!TIP]
+    > [!NOTE]
     > Customize the `sessionResult` to log loading messages (always useful for debugging).
     > 
     > ```csharp
